@@ -1,18 +1,15 @@
 (() => {
-  const video = document.getElementById("introVideo");
-  const intro = document.getElementById("intro");
-  const catalogue = document.getElementById("catalogue");
+  const intro = document.getElementById('intro');
+  const catalogue = document.getElementById('catalogue');
+
   const showCatalogue = () => {
-    if (!intro || !catalogue) return;
-    intro.style.display = "none";
-    catalogue.classList.remove("hidden");
+    intro.style.display = 'none';
+    catalogue.classList.add('show');
+    // allow scroll after intro
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
   };
 
-  video?.addEventListener("ended", showCatalogue);
-
-  // Fallback after 8 seconds (change to 6000/10000 as needed)
-  setTimeout(showCatalogue, 8000);
-
-  // Try play (autoplay is usually allowed when muted)
-  try { video?.play(); } catch (e) {}
+  // 3 seconds then cut
+  setTimeout(showCatalogue, 3000);
 })();
